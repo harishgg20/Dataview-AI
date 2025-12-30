@@ -35,11 +35,16 @@ def generate_insights(
         raise HTTPException(status_code=404, detail="File not found")
 
     # 2. Configure Gemini
-    api_key = os.getenv("GEMINI_API_KEY")
+    # 2. Configure Gemini
+    user_key = current_user.api_key
+    system_key = os.getenv("GEMINI_API_KEY")
+    # Prioritize user key if set
+    api_key = user_key if (user_key and user_key.strip()) else system_key
+    
     if not api_key:
         print("FAILED: GEMINI_API_KEY not set")
         # Check fallback .env loading if needed, but os.getenv should work if loaded
-        raise HTTPException(status_code=500, detail="Server misconfigured: Missing AI API Key")
+        raise HTTPException(status_code=500, detail="Missing AI API Key. Please provide one in Settings.")
     
     genai.configure(api_key=api_key)
 
@@ -214,7 +219,14 @@ def ask_data(
         raise HTTPException(status_code=404, detail="File not found")
 
     # 2. Configure Gemini
-    api_key = os.getenv("GEMINI_API_KEY")
+    # 2. Configure Gemini
+    user_key = current_user.api_key
+    system_key = os.getenv("GEMINI_API_KEY")
+    api_key = user_key if (user_key and user_key.strip()) else system_key
+
+    if not api_key:
+         raise HTTPException(status_code=500, detail="Missing AI API Key. Please provide one in Settings.")
+
     genai.configure(api_key=api_key)
 
     try:

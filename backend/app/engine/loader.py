@@ -29,6 +29,11 @@ def load_dataframe(file_path: str, file_type: str, limit: int = None):
                 conn_str = file_path
                 query = "SELECT 1" 
             
+            # Security: Basic Read-Only Check
+            forbidden_keywords = ["INSERT", "UPDATE", "DELETE", "DROP", "ALTER", "TRUNCATE", "GRANT", "REVOKE", "EXECUTE"]
+            if any(keyword in query.upper() for keyword in forbidden_keywords):
+                raise ValueError("Security Violation: Only SELECT queries are allowed.")
+
             if not conn_str:
                 raise ValueError("Missing connection string")
 

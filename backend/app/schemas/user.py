@@ -15,6 +15,7 @@ class UserUpdate(BaseModel):
     password: Optional[str] = None
     email: Optional[EmailStr] = None
     avatar_data: Optional[str] = None
+    api_key: Optional[str] = None
 
 class UserLogin(UserBase):
     password: str

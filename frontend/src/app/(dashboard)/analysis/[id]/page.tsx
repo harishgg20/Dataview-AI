@@ -749,7 +749,7 @@ export default function ProjectDetailPage() {
                                         <div className="flex gap-4">
                                             <div className="w-1/2 space-y-2">
                                                 <Label>Database Type</Label>
-                                                <Select value={dbConfig.type} onValueChange={(v) => setDbConfig({ ...dbConfig, type: v })}>
+                                                <Select value={dbConfig.type} onValueChange={(v: string) => setDbConfig({ ...dbConfig, type: v })}>
                                                     <SelectTrigger><SelectValue /></SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="postgres">PostgreSQL</SelectItem>

@@ -58,6 +58,10 @@ def update_user_me(
              raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
         current_user.password_hash = security.get_password_hash(user_in.password)
 
+    if user_in.api_key is not None:
+        # Allow clearing logic if key is empty string?
+        current_user.api_key = user_in.api_key
+
     db.add(current_user)
     db.commit()
     db.refresh(current_user)

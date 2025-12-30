@@ -16,3 +16,4 @@ class User(Base):
     avatar_data = Column(String, nullable=True) # Base64 encoded image string
     phone_number = Column(String, nullable=True)
     job_title = Column(String, nullable=True)
+    api_key = Column(String, nullable=True) # User's personal Gemini API Key
