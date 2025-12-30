@@ -427,7 +427,7 @@ export function DataCleaningPanel({ columns = [], data = [], totalRows = 0, onSa
                                                     <SelectItem value="text">Text</SelectItem>
                                                 </SelectContent>
                                             </Select>
-                                            <Button size="sm" variant="secondary" onClick={() => addStep("type", "Convert Type", "Selected Col")}>Apply</Button>
+                                            <Button size="sm" variant="outline" onClick={() => addStep("type", "Convert Type", "Selected Col")}>Apply</Button>
                                         </div>
                                     </div>
                                     <Button variant="outline" className="w-full justify-start text-xs" onClick={() => addStep("column", "Fill Nulls with 0", "Selected Col")}>
@@ -469,7 +469,7 @@ export function DataCleaningPanel({ columns = [], data = [], totalRows = 0, onSa
                                         </Select>
                                         <div className="flex gap-2 items-center">
                                             <Input placeholder="Delimiter (e.g. ,)" className="w-24 h-9" value={splitDelimiter} onChange={e => setSplitDelimiter(e.target.value)} />
-                                            <Button size="sm" variant="secondary" onClick={() => addStep("split", `Split by '${splitDelimiter}'`, splitCol || "Col")}>Split</Button>
+                                            <Button size="sm" variant="outline" onClick={() => addStep("split", `Split by '${splitDelimiter}'`, splitCol || "Col")}>Split</Button>
                                         </div>
                                     </div>
 
@@ -488,7 +488,7 @@ export function DataCleaningPanel({ columns = [], data = [], totalRows = 0, onSa
                                         </div>
                                         <div className="flex gap-2 items-center">
                                             <Input placeholder="Separator (e.g. space)" className="w-full h-9" value={mergeSeparator} onChange={e => setMergeSeparator(e.target.value)} />
-                                            <Button size="sm" variant="secondary" onClick={() => addStep("merge", `Merge with '${mergeSeparator}'`, `${mergeCol1}+${mergeCol2}`)}>Merge</Button>
+                                            <Button size="sm" variant="outline" onClick={() => addStep("merge", `Merge with '${mergeSeparator}'`, `${mergeCol1}+${mergeCol2}`)}>Merge</Button>
                                         </div>
                                     </div>
                                 </TabsContent>
