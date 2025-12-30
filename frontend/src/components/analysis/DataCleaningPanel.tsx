@@ -497,7 +497,7 @@ export function DataCleaningPanel({ columns = [], data = [], totalRows = 0, onSa
                                 <TabsContent value="std" className="space-y-4">
                                     <div className="space-y-2">
                                         <Label>Standardize Values</Label>
-                                        <Select onValueChange={(val) => {
+                                        <Select onValueChange={(val: string) => {
                                             setStdCol(val);
                                             // Mock scanning for values
                                             setMockMappings([
