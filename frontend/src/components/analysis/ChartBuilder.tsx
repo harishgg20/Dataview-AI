@@ -70,7 +70,7 @@ export function ChartBuilder({ columns, onSave, onCancel }: ChartBuilderProps) {
 
                     <div className="space-y-2">
                         <Label>X-Axis (Dimension)</Label>
-                        <Select value={config.xAxis} onValueChange={(v) => setConfig({ ...config, xAxis: v })}>
+                        <Select value={config.xAxis} onValueChange={(v: string) => setConfig({ ...config, xAxis: v })}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Select Column" />
                             </SelectTrigger>
@@ -82,7 +82,7 @@ export function ChartBuilder({ columns, onSave, onCancel }: ChartBuilderProps) {
 
                     <div className="space-y-2">
                         <Label>Y-Axis (Measure)</Label>
-                        <Select value={config.yAxis} onValueChange={(v) => setConfig({ ...config, yAxis: v })}>
+                        <Select value={config.yAxis} onValueChange={(v: string) => setConfig({ ...config, yAxis: v })}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Select Column" />
                             </SelectTrigger>
@@ -94,7 +94,7 @@ export function ChartBuilder({ columns, onSave, onCancel }: ChartBuilderProps) {
 
                     <div className="space-y-2">
                         <Label>Aggregation</Label>
-                        <Select value={config.agg} onValueChange={(v) => setConfig({ ...config, agg: v as any })}>
+                        <Select value={config.agg} onValueChange={(v: string) => setConfig({ ...config, agg: v as any })}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Sum" />
                             </SelectTrigger>
