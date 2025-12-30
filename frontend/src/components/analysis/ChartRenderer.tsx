@@ -73,7 +73,7 @@ export function ChartRenderer({ config, data = [], loading = false, error = null
                         <XAxis dataKey={config.xAxis} fontSize={12} tickLine={false} axisLine={false} />
                         <YAxis fontSize={12} tickLine={false} axisLine={false} />
                         <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} cursor={{ fill: 'transparent' }} />
-                        <Bar dataKey={config.yAxis} fill="#3b82f6" radius={[4, 4, 0, 0]} onClick={(data, index) => onPointClick && onPointClick(data)} />
+                        <Bar dataKey={config.yAxis} fill="#3b82f6" radius={[4, 4, 0, 0]} onClick={(data: any) => onPointClick && onPointClick(data)} />
                     </BarChart>
                 );
             case 'line':
@@ -109,7 +109,7 @@ export function ChartRenderer({ config, data = [], loading = false, error = null
                             paddingAngle={5}
                             dataKey={config.yAxis}
                             nameKey={config.xAxis}
-                            onClick={(data) => onPointClick && onPointClick(data)}
+                            onClick={(data: any) => onPointClick && onPointClick(data)}
                         >
                             {chartData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} cursor="pointer" />
@@ -126,7 +126,7 @@ export function ChartRenderer({ config, data = [], loading = false, error = null
                         <XAxis type="number" dataKey={config.xAxis} name={config.xAxis} fontSize={12} />
                         <YAxis type="number" dataKey={config.yAxis} name={config.yAxis} fontSize={12} />
                         <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ borderRadius: '8px' }} />
-                        <Scatter name="Data" data={chartData} fill="#3b82f6" cursor="pointer" onClick={(data) => onPointClick && onPointClick(data.payload)} />
+                        <Scatter name="Data" data={chartData} fill="#3b82f6" cursor="pointer" onClick={(data: any) => onPointClick && onPointClick(data.payload)} />
                     </ScatterChart>
                 );
             // Default fallback
@@ -140,7 +140,7 @@ export function ChartRenderer({ config, data = [], loading = false, error = null
     };
 
     return (
-        <ResponsiveContainer width="100%" height={height}>
+        <ResponsiveContainer width="100%" height={height as any}>
             {renderChart()}
         </ResponsiveContainer>
     );
