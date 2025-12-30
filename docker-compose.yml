@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: analytics_frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8002/api/v1
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: analytics_backend
+    ports:
+      - "8002:8000"
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/analytics
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - SECRET_KEY=${SECRET_KEY:-supersecretkey}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: analytics_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: analytics
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    container_name: analytics_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

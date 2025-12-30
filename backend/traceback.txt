@@ -1,0 +1,49 @@
+Login failed: Mapper 'Mapper[Project(projects)]' has no property 'charts'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+Traceback (most recent call last):
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2531, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'charts'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\app\api\v1\auth.py", line 35, in login
+    user = db.query(User).filter(User.email == user_credentials.email).first()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2941, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in _set_entities
+    coercions.expect(
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 389, in expect
+    insp._post_inspect
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
+    self._check_configure()
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4268, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2427, in _post_configure_properties
+    prop.init()
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
+    self.do_init()
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1660, in do_init
+    self._generate_backref()
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2144, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1591, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\haris\Downloads\Data Analyst\analytics-platform\backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2533, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[Project(projects)]' has no property 'charts'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+
+--------------------
