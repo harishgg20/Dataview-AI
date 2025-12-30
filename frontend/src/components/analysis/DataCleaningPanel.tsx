@@ -315,7 +315,7 @@ export function DataCleaningPanel({ columns = [], data = [], totalRows = 0, onSa
                     </Dialog>
                     <Dialog open={isPreviewOpen} onOpenChange={(open: boolean) => setIsPreviewOpen(open)}>
                         <DialogTrigger>
-                            <Button variant="secondary" size="sm">
+                            <Button variant="outline" size="sm">
                                 <FileSpreadsheet className="mr-2 h-4 w-4" /> Preview Data
                             </Button>
                         </DialogTrigger>
