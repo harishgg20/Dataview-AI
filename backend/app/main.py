@@ -43,7 +43,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # Trusted Host
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "0.0.0.0"])
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["*"])
 
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Auth"])
 app.include_router(projects.router, prefix="/api/v1/projects", tags=["Projects"])
