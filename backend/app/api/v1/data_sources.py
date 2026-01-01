@@ -210,7 +210,11 @@ def preview_data_source(
 
     file_path = data_source.connection_config.get('file_path')
     if not file_path or not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="File not found on server")
+        # Specific error for ephemeral storage issues
+        raise HTTPException(
+            status_code=404, 
+            detail="File not found on server (Storage may have been cleared). Please delete and re-upload this data source."
+        )
 
     try:
         import pandas as pd
