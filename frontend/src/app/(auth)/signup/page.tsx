@@ -38,7 +38,7 @@ export default function SignupPage() {
         <div className="flex items-center justify-center min-h-screen bg-gray-50">
             <Card className="w-full max-w-sm rounded-[16px] border-none shadow-md">
                 <CardHeader className="space-y-1 text-center pb-2">
-                    <CardTitle className="text-xl font-bold">Analytics Workspace</CardTitle>
+                    <CardTitle className="text-xl font-bold">Dataview AI</CardTitle>
                     <CardDescription>Create your account</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4 pt-4">

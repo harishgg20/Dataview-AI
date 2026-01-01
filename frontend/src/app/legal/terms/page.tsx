@@ -6,7 +6,7 @@ export default function TermsPage() {
             <p className="lead">Last updated: {new Date().toLocaleDateString()}</p>
 
             <p>
-                Please read these Terms of Service ("Terms") carefully before using the <strong>Analytics Platform</strong> operated by us.
+                Please read these Terms of Service ("Terms") carefully before using the <strong>Dataview AI</strong> operated by us.
             </p>
 
             <h3>1. Acceptance of Terms</h3>
@@ -16,7 +16,7 @@ export default function TermsPage() {
             <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms.</p>
 
             <h3>3. Intellectual Property</h3>
-            <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Analytics Platform and its licensors.</p>
+            <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Dataview AI and its licensors.</p>
 
             <h3>4. Termination</h3>
             <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>

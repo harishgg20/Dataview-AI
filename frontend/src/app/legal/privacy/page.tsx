@@ -6,7 +6,7 @@ export default function PrivacyPage() {
             <p className="lead">Last updated: {new Date().toLocaleDateString()}</p>
 
             <p>
-                At <strong>Analytics Platform</strong>, we take your privacy seriously. This Privacy Policy describes how we collect, use, and protect your personal information.
+                At <strong>Dataview AI</strong>, we take your privacy seriously. This Privacy Policy describes how we collect, use, and protect your personal information.
             </p>
 
             <h3>1. Information We Collect</h3>

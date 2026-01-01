@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Analytics Platform",
-  description: "Enterprise-grade data analytics workspace",
+  title: "Dataview AI",
+  description: "Enterprise-grade AI data analytics workspace",
 };
 
 export default function RootLayout({

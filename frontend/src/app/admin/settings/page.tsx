@@ -15,7 +15,7 @@ export default function AdminSettingsPage() {
 
     // Mock Settings State
     const [settings, setSettings] = useState({
-        siteName: "Analytics Platform",
+        siteName: "Dataview AI",
         maintenanceMode: false,
         allowRegistration: true,
         enablePublicDashboards: false,

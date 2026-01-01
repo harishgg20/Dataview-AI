@@ -61,7 +61,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
 
             {/* Simple Footer */}
             <footer className="py-6 text-center text-xs text-gray-400">
-                &copy; {new Date().getFullYear()} Analytics Platform. All rights reserved.
+                &copy; {new Date().getFullYear()} Dataview AI. All rights reserved.
             </footer>
         </div>
     );
