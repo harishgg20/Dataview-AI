@@ -27,8 +27,8 @@
     "jspdf": "^3.0.4",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.69.0",
     "react-markdown": "^10.1.0",
     "react-simple-maps": "^3.0.0",
@@ -36,6 +36,11 @@
     "tailwind-merge": "^3.4.0",
     "zod": "^4.2.1",
     "zustand": "^5.0.9"
+  },
+  "overrides": {
+    "react-simple-maps": {
+      "react": "$react"
+    }
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
