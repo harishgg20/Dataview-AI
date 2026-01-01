@@ -154,10 +154,11 @@ from app.engine.loader import load_dataframe
 def read_data_sources(
     skip: int = 0,
     limit: int = 100,
-    current_user: User = Depends(deps.get_current_admin_user),
+    current_user: User = Depends(deps.get_current_user),
     db: Session = Depends(database.get_db)
 ):
-    return db.query(DataSource).offset(skip).limit(limit).all()
+    # Filter data sources by projects owned by the current user
+    return db.query(DataSource).join(Project).filter(Project.owner_id == current_user.id).offset(skip).limit(limit).all()
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_data_source(
