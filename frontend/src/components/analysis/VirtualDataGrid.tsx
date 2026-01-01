@@ -77,7 +77,7 @@ export function VirtualDataGrid({ sourceId, initialColumns }: VirtualDataGridPro
     return (
         <Card className="h-full border-none shadow-none">
             <CardContent className="p-0 h-[600px] relative font-mono text-sm">
-                <div className="overflow-auto h-full w-full border rounded-md bg-white text-slate-600" ref={parentRef}>
+                <div className="overflow-auto h-full w-full border rounded-md bg-white text-black" ref={parentRef}>
                     <div
                         style={{
                             height: `${rowVirtualizer.getTotalSize()}px`,
@@ -137,7 +137,7 @@ export function VirtualDataGrid({ sourceId, initialColumns }: VirtualDataGridPro
                     <div className="w-[50px] p-2 border-r font-bold text-gray-500 bg-gray-200 shrink-0">#</div>
                     <div className="flex flex-1 overflow-hidden" ref={el => { if (el && parentRef.current) el.scrollLeft = parentRef.current.scrollLeft }}>
                         {columns.map(col => (
-                            <div key={col} className="flex-1 min-w-[150px] p-2 font-semibold border-r truncate">
+                            <div key={col} className="flex-1 min-w-[150px] p-2 font-semibold border-r truncate text-black">
                                 {col}
                             </div>
                         ))}
