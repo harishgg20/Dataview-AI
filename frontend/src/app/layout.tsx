@@ -15,8 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dataview AI",
-  description: "Enterprise-grade AI data analytics workspace",
+  title: {
+    default: "Dataview AI - Enterprise Data Analytics",
+    template: "%s | Dataview AI"
+  },
+  description: "Enterprise-grade AI data analytics workspace. Visualize, clean, and analyze your data with advanced AI insights.",
+  metadataBase: new URL('https://dataview-ai.vercel.app'),
+  keywords: ["Data Analytics", "AI", "Visualization", "Business Intelligence", "Dashboard", "SQL", "Pandas", "DuckDB"],
+  authors: [{ name: "Dataview Team" }],
+  openGraph: {
+    title: "Dataview AI - Enterprise Data Analytics",
+    description: "Enterprise-grade AI data analytics workspace. Visualize, clean, and analyze your data with advanced AI insights.",
+    url: 'https://dataview-ai.vercel.app',
+    siteName: 'Dataview AI',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dataview AI - Enterprise Data Analytics",
+    description: "Enterprise-grade AI data analytics workspace.",
+  },
 };
 
 export default function RootLayout({

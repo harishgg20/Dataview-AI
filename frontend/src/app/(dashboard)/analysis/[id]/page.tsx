@@ -33,6 +33,7 @@ import { ChartBuilder } from "@/components/analysis/ChartBuilder";
 import { FilterBuilder } from "@/components/analysis/FilterBuilder";
 import { AIChatPanel } from "@/components/ai/AIChatPanel";
 import { MessageCircle } from "lucide-react";
+import MapChart from "@/components/charts/MapChart";
 
 
 interface FilterRule {
@@ -166,7 +167,7 @@ export default function ProjectDetailPage() {
     const [edaView, setEdaView] = useState<'preview' | 'stats' | 'chart' | 'correlation' | 'compare'>('preview');
     const [statsData, setStatsData] = useState<any>(null);
     const [chartConfig, setChartConfig] = useState<{
-        type: 'bar' | 'line' | 'scatter' | 'area' | 'histogram' | 'pie' | 'radar' | 'radialBar' | 'boxplot' | 'correlation';
+        type: 'bar' | 'line' | 'scatter' | 'area' | 'histogram' | 'pie' | 'radar' | 'radialBar' | 'boxplot' | 'correlation' | 'map';
         xAxis: string;
         yAxis: string;
         isPivot?: boolean;
@@ -1321,6 +1322,7 @@ export default function ProjectDetailPage() {
                                                             <SelectItem value="radialBar">Radial Bar Chart</SelectItem>
                                                             <SelectItem value="boxplot">Box Plot</SelectItem>
                                                             <SelectItem value="correlation">Correlation Matrix</SelectItem>
+                                                            <SelectItem value="map">Geospatial Map</SelectItem>
                                                         </SelectContent>
                                                     </Select>
 
@@ -1333,7 +1335,7 @@ export default function ProjectDetailPage() {
                                                         disabled={chartConfig.type === 'histogram'}
                                                     >
                                                         <SelectTrigger className="w-[150px] bg-white text-black border-slate-300">
-                                                            <SelectValue placeholder={chartConfig.isPivot ? 'Group By' : (chartConfig.type === 'histogram' ? 'Auto Bins' : 'X Axis')} />
+                                                            <SelectValue placeholder={chartConfig.isPivot ? 'Group By' : (chartConfig.type === 'histogram' ? 'Auto Bins' : (chartConfig.type === 'map' ? 'Country Column' : 'X Axis'))} />
                                                         </SelectTrigger>
                                                         <SelectContent className="bg-white text-black max-h-[300px]">
                                                             {previewData.columns.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
@@ -1506,9 +1508,17 @@ export default function ProjectDetailPage() {
                                                         {/* Download button could go here */}
                                                     </div>
 
-                                                    {showChart && (chartConfig.type === 'correlation' || (chartConfig.xAxis && chartConfig.yAxis)) ? (
+                                                    {showChart && (chartConfig.type === 'correlation' || chartConfig.type === 'map' || (chartConfig.xAxis && chartConfig.yAxis)) ? (
                                                         <ResponsiveContainer width="100%" height={500}>
                                                             {(() => {
+                                                                if (chartConfig.type === 'map') {
+                                                                    return (
+                                                                        <div className="h-full w-full p-4 flex items-center justify-center">
+                                                                            <MapChart data={filteredData} countryCol={chartConfig.xAxis} valueCol={chartConfig.yAxis} />
+                                                                        </div>
+                                                                    );
+                                                                }
+
                                                                 if (chartConfig.type === 'correlation') {
                                                                     if (!correlationData) return <div className="flex items-center justify-center h-full">Loading Correlation...</div>;
 
