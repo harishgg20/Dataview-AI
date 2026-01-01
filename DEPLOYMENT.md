@@ -11,7 +11,7 @@ This application is designed as a **Split Stack**:
 
 1.  **Sign up** at [render.com](https://render.com/).
 2.  Click **New +** -> **Web Service**.
-3.  Connect your GitHub Repository (`harishgg20/AI-Data-Analyst`).
+3.  Connect your GitHub Repository (`harishgg20/Dataview-AI`).
 4.  **Configure Settings**:
     *   **Root Directory**: `backend` (⚠️ Crucial!)
     *   **Runtime**: Python 3
@@ -33,7 +33,7 @@ This application is designed as a **Split Stack**:
 
 1.  **Sign up** at [vercel.com](https://vercel.com/).
 2.  Click **Add New...** -> **Project**.
-3.  Import your GitHub Repository (`harishgg20/AI-Data-Analyst`).
+3.  Import your GitHub Repository (`harishgg20/Dataview-AI`).
 4.  **Configure Project**:
     *   **Framework Preset**: Next.js (Default).
     *   **Root Directory**: Click "Edit" and select `frontend`. (⚠️ Crucial!)
