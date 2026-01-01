@@ -1295,7 +1295,7 @@ export default function ProjectDetailPage() {
 
                                                     <Select
                                                         value={chartConfig.type}
-                                                        onValueChange={(val) => {
+                                                        onValueChange={(val: string) => {
                                                             const newType = val as any;
                                                             setChartConfig({ ...chartConfig, type: newType });
                                                             setShowChart(false);
@@ -1326,7 +1326,7 @@ export default function ProjectDetailPage() {
 
                                                     <Select
                                                         value={chartConfig.xAxis}
-                                                        onValueChange={(val) => {
+                                                        onValueChange={(val: string) => {
                                                             setChartConfig({ ...chartConfig, xAxis: val });
                                                             setShowChart(false);
                                                         }}
@@ -1342,7 +1342,7 @@ export default function ProjectDetailPage() {
 
                                                     <Select
                                                         value={chartConfig.yAxis}
-                                                        onValueChange={(val) => {
+                                                        onValueChange={(val: string) => {
                                                             setChartConfig({ ...chartConfig, yAxis: val });
                                                             setShowChart(false);
                                                         }}
@@ -1360,7 +1360,7 @@ export default function ProjectDetailPage() {
                                                     {chartConfig.isPivot && chartConfig.type !== 'histogram' && (
                                                         <Select
                                                             value={chartConfig.agg}
-                                                            onValueChange={(val) => {
+                                                            onValueChange={(val: string) => {
                                                                 setChartConfig({ ...chartConfig, agg: val as any });
                                                                 setShowChart(false);
                                                             }}
@@ -1393,7 +1393,7 @@ export default function ProjectDetailPage() {
 
                                                         <Select
                                                             value={limitConfig.type}
-                                                            onValueChange={(val) => {
+                                                            onValueChange={(val: string) => {
                                                                 setLimitConfig({ ...limitConfig, type: val as any });
                                                                 setShowChart(false);
                                                             }}
