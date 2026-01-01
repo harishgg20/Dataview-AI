@@ -77,7 +77,7 @@ export function VirtualDataGrid({ sourceId, initialColumns }: VirtualDataGridPro
     return (
         <Card className="h-full border-none shadow-none">
             <CardContent className="p-0 h-[600px] relative font-mono text-sm">
-                <div className="overflow-auto h-full w-full border rounded-md bg-white" ref={parentRef}>
+                <div className="overflow-auto h-full w-full border rounded-md bg-white text-slate-600" ref={parentRef}>
                     <div
                         style={{
                             height: `${rowVirtualizer.getTotalSize()}px`,
@@ -116,7 +116,7 @@ export function VirtualDataGrid({ sourceId, initialColumns }: VirtualDataGridPro
                                                     {virtualRow.index + 1}
                                                 </td>
                                                 {row ? columns.map(col => (
-                                                    <td key={col} className="p-2 border-r truncate max-w-[200px]" title={String(row[col])}>
+                                                    <td key={col} className="p-2 border-r truncate max-w-[200px] text-gray-900" title={String(row[col])}>
                                                         {String(row[col] ?? "")}
                                                     </td>
                                                 )) : (
