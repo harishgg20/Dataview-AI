@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     title: "Dataview AI - Enterprise Data Analytics",
     description: "Enterprise-grade AI data analytics workspace.",
   },
+  verification: {
+    google: "42BVWjC5X_ygTROLoUGl2cZv7zw7iB4toN8Hi5a-TZE",
+  },
 };
 
 export default function RootLayout({
