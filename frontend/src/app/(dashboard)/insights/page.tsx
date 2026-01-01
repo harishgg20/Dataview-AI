@@ -177,11 +177,11 @@ export default function InsightsPage() {
                     <div className="flex-1 w-full md:w-auto">
                         <label className="text-sm font-medium mb-1.5 block text-gray-700">Select Dataset</label>
                         <Select value={selectedSource} onValueChange={setSelectedSource} disabled={loading}>
-                            <SelectTrigger className="bg-white w-full">
+                            <SelectTrigger className="bg-white w-full text-black border-slate-300">
                                 <SelectValue>
                                     {selectedSource ? (
                                         <div className="flex items-center gap-2">
-                                            <Database className="h-4 w-4 text-gray-400" />
+                                            <Database className="h-4 w-4 text-gray-500" />
                                             {dataSources.find(ds => ds.id.toString() === selectedSource)?.connection_config?.original_name || "Unknown Dataset"}
                                         </div>
                                     ) : (
@@ -189,11 +189,11 @@ export default function InsightsPage() {
                                     )}
                                 </SelectValue>
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="bg-white text-black">
                                 {dataSources.map(ds => (
                                     <SelectItem key={ds.id} value={ds.id.toString()}>
                                         <div className="flex items-center gap-2">
-                                            <Database className="h-4 w-4 text-gray-400" />
+                                            <Database className="h-4 w-4 text-gray-500" />
                                             {ds.connection_config?.original_name || "Unnamed Dataset"}
                                         </div>
                                     </SelectItem>

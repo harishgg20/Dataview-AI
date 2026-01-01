@@ -1252,7 +1252,7 @@ export default function ProjectDetailPage() {
                                                             setShowChart(false);
                                                         }}
                                                     />
-                                                    <label htmlFor="pivotMode" className="text-sm font-semibold cursor-pointer">
+                                                    <label htmlFor="pivotMode" className="text-sm font-semibold cursor-pointer !text-gray-900">
                                                         Pivot Mode (Group & Aggregate)
                                                     </label>
                                                 </div>
@@ -1293,15 +1293,13 @@ export default function ProjectDetailPage() {
                                                         </div>
                                                     )}
 
-                                                    <select
-                                                        className="p-2 border rounded text-sm min-w-[150px]"
+                                                    <Select
                                                         value={chartConfig.type}
-                                                        onChange={e => {
-                                                            const newType = e.target.value as any;
+                                                        onValueChange={(val) => {
+                                                            const newType = val as any;
                                                             setChartConfig({ ...chartConfig, type: newType });
                                                             setShowChart(false);
                                                             if (newType === 'correlation') {
-                                                                // Auto-fetch correlation data
                                                                 if (activeSourceId && !correlationData) {
                                                                     dataSourceService.getCorrelation(activeSourceId).then(setCorrelationData).catch(err => console.error("Corr failed", err));
                                                                 }
@@ -1309,60 +1307,75 @@ export default function ProjectDetailPage() {
                                                             }
                                                         }}
                                                     >
-                                                        <option value="bar">Bar Chart</option>
-                                                        <option value="line">Line Chart</option>
-                                                        <option value="scatter">Scatter Plot</option>
-                                                        <option value="area">Area Chart</option>
-                                                        <option value="histogram">Histogram</option>
-                                                        <option value="pie">Pie Chart</option>
-                                                        <option value="radar">Radar Chart</option>
-                                                        <option value="radialBar">Radial Bar Chart</option>
-                                                        <option value="boxplot">Box Plot</option>
-                                                        <option value="correlation">Correlation Matrix</option>
-                                                    </select>
+                                                        <SelectTrigger className="w-[180px] bg-white text-black border-slate-300">
+                                                            <SelectValue placeholder="Select Chart Type" />
+                                                        </SelectTrigger>
+                                                        <SelectContent className="bg-white text-black">
+                                                            <SelectItem value="bar">Bar Chart</SelectItem>
+                                                            <SelectItem value="line">Line Chart</SelectItem>
+                                                            <SelectItem value="scatter">Scatter Plot</SelectItem>
+                                                            <SelectItem value="area">Area Chart</SelectItem>
+                                                            <SelectItem value="histogram">Histogram</SelectItem>
+                                                            <SelectItem value="pie">Pie Chart</SelectItem>
+                                                            <SelectItem value="radar">Radar Chart</SelectItem>
+                                                            <SelectItem value="radialBar">Radial Bar Chart</SelectItem>
+                                                            <SelectItem value="boxplot">Box Plot</SelectItem>
+                                                            <SelectItem value="correlation">Correlation Matrix</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
 
-                                                    <select
-                                                        className="p-2 border rounded text-sm min-w-[120px]"
+                                                    <Select
                                                         value={chartConfig.xAxis}
-                                                        onChange={e => {
-                                                            setChartConfig({ ...chartConfig, xAxis: e.target.value });
+                                                        onValueChange={(val) => {
+                                                            setChartConfig({ ...chartConfig, xAxis: val });
                                                             setShowChart(false);
                                                         }}
                                                         disabled={chartConfig.type === 'histogram'}
                                                     >
-                                                        <option value="">{chartConfig.isPivot ? 'Group By' : (chartConfig.type === 'histogram' ? 'Auto Bins' : 'X Axis')}</option>
-                                                        {previewData.columns.map(c => <option key={c} value={c}>{c}</option>)}
-                                                    </select>
+                                                        <SelectTrigger className="w-[150px] bg-white text-black border-slate-300">
+                                                            <SelectValue placeholder={chartConfig.isPivot ? 'Group By' : (chartConfig.type === 'histogram' ? 'Auto Bins' : 'X Axis')} />
+                                                        </SelectTrigger>
+                                                        <SelectContent className="bg-white text-black max-h-[300px]">
+                                                            {previewData.columns.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                                                        </SelectContent>
+                                                    </Select>
 
-                                                    <select
-                                                        className="p-2 border rounded text-sm min-w-[120px]"
+                                                    <Select
                                                         value={chartConfig.yAxis}
-                                                        onChange={e => {
-                                                            setChartConfig({ ...chartConfig, yAxis: e.target.value });
+                                                        onValueChange={(val) => {
+                                                            setChartConfig({ ...chartConfig, yAxis: val });
                                                             setShowChart(false);
                                                         }}
                                                     >
-                                                        <option value="">{chartConfig.isPivot ? 'Value Column' : (chartConfig.type === 'histogram' ? 'Variable' : 'Y Axis')}</option>
-                                                        {previewData.columns
-                                                            .filter(c => ['int', 'float'].some(t => previewData.dtypes[c]?.toLowerCase().includes(t)))
-                                                            .map(c => <option key={c} value={c}>{c}</option>)}
-                                                    </select>
+                                                        <SelectTrigger className="w-[150px] bg-white text-black border-slate-300">
+                                                            <SelectValue placeholder={chartConfig.isPivot ? 'Value Column' : (chartConfig.type === 'histogram' ? 'Variable' : 'Y Axis')} />
+                                                        </SelectTrigger>
+                                                        <SelectContent className="bg-white text-black max-h-[300px]">
+                                                            {previewData.columns
+                                                                .filter(c => ['int', 'float'].some(t => previewData.dtypes[c]?.toLowerCase().includes(t)))
+                                                                .map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                                                        </SelectContent>
+                                                    </Select>
 
                                                     {chartConfig.isPivot && chartConfig.type !== 'histogram' && (
-                                                        <select
-                                                            className="p-2 border rounded text-sm min-w-[120px]"
+                                                        <Select
                                                             value={chartConfig.agg}
-                                                            onChange={e => {
-                                                                setChartConfig({ ...chartConfig, agg: e.target.value as any });
+                                                            onValueChange={(val) => {
+                                                                setChartConfig({ ...chartConfig, agg: val as any });
                                                                 setShowChart(false);
                                                             }}
                                                         >
-                                                            <option value="sum">Sum</option>
-                                                            <option value="avg">Average</option>
-                                                            <option value="count">Count</option>
-                                                            <option value="min">Min</option>
-                                                            <option value="max">Max</option>
-                                                        </select>
+                                                            <SelectTrigger className="w-[120px] bg-white text-black border-slate-300">
+                                                                <SelectValue placeholder="Agg" />
+                                                            </SelectTrigger>
+                                                            <SelectContent className="bg-white text-black">
+                                                                <SelectItem value="sum">Sum</SelectItem>
+                                                                <SelectItem value="avg">Average</SelectItem>
+                                                                <SelectItem value="count">Count</SelectItem>
+                                                                <SelectItem value="min">Min</SelectItem>
+                                                                <SelectItem value="max">Max</SelectItem>
+                                                            </SelectContent>
+                                                        </Select>
                                                     )}
 
                                                     <div className="flex items-center gap-2 border-l pl-4 ml-2">
@@ -1376,26 +1389,30 @@ export default function ProjectDetailPage() {
                                                             }}
                                                             className="w-4 h-4"
                                                         />
-                                                        <label htmlFor="limitEnable" className="text-sm cursor-pointer whitespace-nowrap">Filter:</label>
+                                                        <label htmlFor="limitEnable" className="text-sm cursor-pointer whitespace-nowrap !text-gray-900">Filter:</label>
 
-                                                        <select
-                                                            className="p-2 border rounded text-sm w-[100px]"
+                                                        <Select
                                                             value={limitConfig.type}
-                                                            onChange={e => {
-                                                                setLimitConfig({ ...limitConfig, type: e.target.value as any });
+                                                            onValueChange={(val) => {
+                                                                setLimitConfig({ ...limitConfig, type: val as any });
                                                                 setShowChart(false);
                                                             }}
                                                             disabled={!limitConfig.enabled}
                                                         >
-                                                            <option value="top">Top N</option>
-                                                            <option value="bottom">Bottom N</option>
-                                                            <option value="gt">Value &gt;</option>
-                                                            <option value="lt">Value &lt;</option>
-                                                        </select>
+                                                            <SelectTrigger className="w-[110px] bg-white text-black border-slate-300">
+                                                                <SelectValue />
+                                                            </SelectTrigger>
+                                                            <SelectContent className="bg-white text-black">
+                                                                <SelectItem value="top">Top N</SelectItem>
+                                                                <SelectItem value="bottom">Bottom N</SelectItem>
+                                                                <SelectItem value="gt">Value &gt;</SelectItem>
+                                                                <SelectItem value="lt">Value &lt;</SelectItem>
+                                                            </SelectContent>
+                                                        </Select>
 
-                                                        <input
+                                                        <Input
                                                             type="number"
-                                                            className="p-2 border rounded text-sm w-[70px]"
+                                                            className="w-[80px] bg-white text-black border-slate-300"
                                                             value={limitConfig.value}
                                                             onChange={e => {
                                                                 setLimitConfig({ ...limitConfig, value: Number(e.target.value) });
@@ -1416,7 +1433,7 @@ export default function ProjectDetailPage() {
                                                                     onChange={e => setChartConfig({ ...chartConfig, showAverage: e.target.checked })}
                                                                     className="w-4 h-4"
                                                                 />
-                                                                <label htmlFor="showAvg" className="text-xs cursor-pointer text-gray-600">Average</label>
+                                                                <label htmlFor="showAvg" className="text-xs cursor-pointer !text-gray-900">Average</label>
                                                             </div>
                                                             <div className="flex items-center gap-1.5">
                                                                 <input
@@ -1426,7 +1443,7 @@ export default function ProjectDetailPage() {
                                                                     onChange={e => setChartConfig({ ...chartConfig, showMedian: e.target.checked })}
                                                                     className="w-4 h-4"
                                                                 />
-                                                                <label htmlFor="showMedian" className="text-xs cursor-pointer text-gray-600">Median</label>
+                                                                <label htmlFor="showMedian" className="text-xs cursor-pointer !text-gray-900">Median</label>
                                                             </div>
                                                             {chartConfig.type === 'scatter' && (
                                                                 <div className="flex items-center gap-1.5">
