@@ -31,7 +31,7 @@ export function ChartBuilder({ columns, onSave, onCancel }: ChartBuilderProps) {
     const isReady = config.xAxis && config.yAxis && name;
 
     return (
-        <div className="flex flex-col h-full border-l bg-white shadow-xl w-[350px] absolute right-0 top-0 bottom-0 z-50 animate-in slide-in-from-right">
+        <div className="flex flex-col h-full border-l bg-white text-black shadow-xl w-[350px] absolute right-0 top-0 bottom-0 z-50 animate-in slide-in-from-right">
             <div className="p-4 border-b bg-gray-50 flex justify-between items-center">
                 <h3 className="font-semibold text-lg">Build Visual</h3>
                 <Button variant="ghost" size="sm" onClick={onCancel}>Close</Button>
@@ -65,45 +65,45 @@ export function ChartBuilder({ columns, onSave, onCancel }: ChartBuilderProps) {
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <Label>Chart Title</Label>
-                        <Input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Sales by City" />
+                        <Input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Sales by City" className="text-black" />
                     </div>
 
                     <div className="space-y-2">
-                        <Label>X-Axis (Dimension)</Label>
+                        <Label className="text-black">X-Axis (Dimension)</Label>
                         <Select value={config.xAxis} onValueChange={(v: string) => setConfig({ ...config, xAxis: v })}>
-                            <SelectTrigger>
+                            <SelectTrigger className="text-black border-slate-300">
                                 <SelectValue placeholder="Select Column" />
                             </SelectTrigger>
-                            <SelectContent>
-                                {columns.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                            <SelectContent className="text-black bg-white border-slate-200">
+                                {columns.map(c => <SelectItem key={c} value={c} className="hover:bg-slate-100 text-black">{c}</SelectItem>)}
                             </SelectContent>
                         </Select>
                     </div>
 
                     <div className="space-y-2">
-                        <Label>Y-Axis (Measure)</Label>
+                        <Label className="text-black">Y-Axis (Measure)</Label>
                         <Select value={config.yAxis} onValueChange={(v: string) => setConfig({ ...config, yAxis: v })}>
-                            <SelectTrigger>
+                            <SelectTrigger className="text-black border-slate-300">
                                 <SelectValue placeholder="Select Column" />
                             </SelectTrigger>
-                            <SelectContent>
-                                {columns.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                            <SelectContent className="text-black bg-white border-slate-200">
+                                {columns.map(c => <SelectItem key={c} value={c} className="hover:bg-slate-100 text-black">{c}</SelectItem>)}
                             </SelectContent>
                         </Select>
                     </div>
 
                     <div className="space-y-2">
-                        <Label>Aggregation</Label>
+                        <Label className="text-black">Aggregation</Label>
                         <Select value={config.agg} onValueChange={(v: string) => setConfig({ ...config, agg: v as any })}>
-                            <SelectTrigger>
+                            <SelectTrigger className="text-black border-slate-300">
                                 <SelectValue placeholder="Sum" />
                             </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="sum">Sum</SelectItem>
-                                <SelectItem value="avg">Average</SelectItem>
-                                <SelectItem value="count">Count</SelectItem>
-                                <SelectItem value="min">Min</SelectItem>
-                                <SelectItem value="max">Max</SelectItem>
+                            <SelectContent className="text-black bg-white border-slate-200">
+                                <SelectItem value="sum" className="text-black">Sum</SelectItem>
+                                <SelectItem value="avg" className="text-black">Average</SelectItem>
+                                <SelectItem value="count" className="text-black">Count</SelectItem>
+                                <SelectItem value="min" className="text-black">Min</SelectItem>
+                                <SelectItem value="max" className="text-black">Max</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
